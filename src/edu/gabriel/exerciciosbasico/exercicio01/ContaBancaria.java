@@ -28,6 +28,7 @@ public class ContaBancaria {
       this.chequeEspecial = 50.00;
     else
       this.chequeEspecial = saldo * 0.5;
+    System.out.println("O cheque especial inicial da sua conta é: R$ " + this.chequeEspecial);
   }
 
   void consultarSaldo() {
@@ -44,6 +45,7 @@ public class ContaBancaria {
     pagarChequeEspecial();
     System.out.print("Digite a quantia a ser depositada: ");
     this.saldo += sc.nextDouble();
+    consultarSaldo();
   }
 
   private void retirarDinheiro(double valorSaque) {
@@ -58,11 +60,13 @@ public class ContaBancaria {
           this.chequeEspecial -= (valorSaque - this.saldo);
           this.saldo = 0;
           this.chequeUsado = true;
+          System.out.println("Valor subtraído com sucesso!");
         }
       }
     }
     else
       this.saldo -= valorSaque;
+      System.out.println("Valor subtraído com sucesso!");
   }
 
   void sacar() {

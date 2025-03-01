@@ -14,11 +14,17 @@ public class Carro {
     }
 
     void ligarCarro() {
-        this.ligado = true;
+        if(!this.ligado) {
+            this.ligado = true;
+            System.out.println("O carro foi ligado");
+        }
     }
 
     void desligarCarro() {
-        this.ligado = false;
+        if(this.ligado) {
+            this.ligado = false;
+            System.out.println("O carro foi desligado");
+        }
     }
 
     void acelerarVelo() {
@@ -43,7 +49,10 @@ public class Carro {
                     if (velocidade != 120) this.velocidade++; 
                     break;
             }
+            verificarVelo();
         }
+        else 
+            System.out.println("Não foi possível acelerar o carro!");
     }
 
     void diminuirVelo() {
@@ -69,7 +78,10 @@ public class Carro {
                     if (velocidade != 101) this.velocidade--; 
                     break;
             }
+            verificarVelo();
         }
+        else 
+            System.out.println("Não foi possível desacelerar o carro!");
     }
 
     void virarEsqDir() {
@@ -84,14 +96,17 @@ public class Carro {
     }
 
     void trocarMarcha() {
-    if(this.ligado) {
-        System.out.print("Deseja aumentar(A) ou diminuir(D) a marcha? ");
-        String novaMarcha = sc.next();
-        if (novaMarcha.equals("A") && this.marcha < 6)
-            this.marcha++;
-        else if (novaMarcha.equals("D") && this.marcha > 0)
-            this.marcha--;
-        verificarDesligado();
+        if(this.ligado) {
+            System.out.print("Deseja aumentar(A) ou diminuir(D) a marcha? ");
+            String novaMarcha = sc.next();
+            if (novaMarcha.equals("A") && this.marcha < 6)
+                this.marcha++;
+            else if (novaMarcha.equals("D") && this.marcha > 0)
+                this.marcha--;
+            verificarDesligado();
         }   
+        else
+            System.out.println("Ligue o carro para trocar a marcha!");
     }
+        
 }
